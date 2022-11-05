@@ -1,23 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
+import './assets/css/normalize.css';
+import './assets/css/skeleton.css';
+import './assets/css/app.css';
+import App from './app';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+document.addEventListener('DOMContentLoaded', () => {
+    const resultado = document.querySelector('#resultado') as HTMLDivElement;
+    const marca = document.querySelector('#marca') as HTMLSelectElement;
+    const year = document.querySelector('#year') as HTMLSelectElement;
+    const minimo = document.querySelector('#minimo') as HTMLSelectElement;
+    const maximo = document.querySelector('#maximo') as HTMLSelectElement;
+    const puertas = document.querySelector('#puertas') as HTMLSelectElement;
+    const transmision = document.querySelector(
+        '#transmision'
+    ) as HTMLSelectElement;
+    const color = document.querySelector('#color') as HTMLSelectElement;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+    const app = new App(
+        resultado,
+        marca,
+        year,
+        minimo,
+        maximo,
+        puertas,
+        transmision,
+        color
+    );
+
+    app.init();
+});
